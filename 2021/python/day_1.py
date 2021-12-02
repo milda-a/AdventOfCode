@@ -2,7 +2,7 @@ from read_data import read_in_data
 
 
 def solve():
-    data = read_in_data('inputs/day_1.txt')
+    data = read_in_data('../inputs/day_1.txt')
 
     # part one ✔
     print(len([x for index, x in enumerate(data) if int(x) > int(data[index - 1])]))

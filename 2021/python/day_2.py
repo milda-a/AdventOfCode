@@ -2,7 +2,7 @@ from read_data import read_in_data
 
 
 def solve():
-    data = read_in_data('./inputs/day_2.txt')
+    data = read_in_data('../inputs/day_2.txt')
 
     horizontal_position = 0
     depth = 0
