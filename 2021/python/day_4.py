@@ -2,7 +2,7 @@ from read_data import read_in_data
 
 
 def solve():
-    data = read_in_file("../inputs/day_4.txt")
+    data = read_in_data("../inputs/day_4.txt")
     numbers = data.pop(0).split(',')
     numbers = [int(num) for num in numbers]
     data = [num.lstrip().replace('  ', ' ').split(' ') for num in data if num]
