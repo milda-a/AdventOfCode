@@ -17,18 +17,16 @@ def checksum(input):
     print(exactly_two * exactly_three)
 
     for value1 in input:
+        EXPECTING_MATCH = len(value1) - 1
         for value2 in input:  # double loops are bad mkay
+            build_it_up = ""
             if value1 != value2:  # same values are not what we're looking at here
-                count_it_up = 0
-                build_it_up = ""
-                EXPECTING_MATCH = len(value1) - 1
                 for i in range(len(value1)):  # index through lines god this is horrible
                     if value1[i] == value2[i]:
-                        count_it_up += 1
                         build_it_up += value1[i]
-                    if count_it_up == EXPECTING_MATCH:
-                        print(build_it_up)
-                        break
+            if len(build_it_up) == EXPECTING_MATCH:
+                print(build_it_up)
+                break
 
 
 if __name__ == "__main__":
