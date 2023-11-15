@@ -18,5 +18,5 @@ def calculate_frequency_change(array):
 
 
 if __name__ == "__main__":
-    input = [int(x) for x in read_in_data('inputs/day_1.txt')]
+    input = [int(x) for x in read_in_data("inputs/day_1.txt")]
     print(calculate_frequency_change(input))

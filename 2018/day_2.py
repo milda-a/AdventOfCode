@@ -30,5 +30,5 @@ def checksum(input):
 
 
 if __name__ == "__main__":
-    input = read_in_data('inputs/day_2.txt')
+    input = read_in_data("inputs/day_2.txt")
     checksum(input)
