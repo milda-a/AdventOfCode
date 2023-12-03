@@ -1,15 +1,15 @@
 from read_data import read_in_data
 
-
 if __name__ == '__main__':
     input = read_in_data("../inputs/day2.txt")
     games_and_rolls = {}
-    id_sum = 0 # for part one
-    total_cubes_needed = 0 # for part two
+    id_sum = 0  # for part one
+    total_cubes_needed = 0  # for part two
     for line in input:
         split_line = line.split(";")
         game_name_and_first_roll = split_line[0].split(":")
-        games_and_rolls[game_name_and_first_roll[0]] = [[x.strip() for x in y.split(",")] for y in [game_name_and_first_roll[-1].strip(), *split_line[1:]]]
+        games_and_rolls[game_name_and_first_roll[0]] = [[x.strip() for x in y.split(",")] for y in
+                                                        [game_name_and_first_roll[-1].strip(), *split_line[1:]]]
     # print(games_and_rolls)
     for game_name, rolls in games_and_rolls.items():
         red, green, blue = (0, 0, 0)
