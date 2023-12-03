@@ -1,7 +1,7 @@
 import read_data
 
-if __name__ == '__main__':
-    input = read_data.read_in_data('../inputs/day1.txt')
+if __name__ == "__main__":
+    input = read_data.read_in_data("../inputs/day1.txt")
 
     # part one
     numbers = [[x for x in y if x.isdigit()] for y in input]
@@ -16,7 +16,7 @@ if __name__ == '__main__':
         "five": "5",
         "six": "6",
         "seven": "7",
-        "eight" : "8",
+        "eight": "8",
         "nine": "9",
     }
     all_numbers = []
