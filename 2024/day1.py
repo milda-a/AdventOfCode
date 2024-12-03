@@ -5,7 +5,7 @@ if __name__ == "__main__":
     data = read_in_data("./data/day1.txt")
     left = []
     right = []
-    data = [x.split('   ') for x in data]
+    data = [x.split("   ") for x in data]
     for x in data:
         left.append(int(x[0]))
         right.append(int(x[1]))

@@ -10,7 +10,7 @@ def is_safe(num1, num2):
     return False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     data = read_in_data("./data/day2.txt")
     data = [[int(x) for x in line.split(" ")] for line in data]
 
@@ -19,11 +19,11 @@ if __name__ == '__main__':
 
     for line in data:
         if all(i < j and j - i <= 3 for i, j in zip(line, line[1:])) or all(
-                i > j and i - j <= 3 for i, j in zip(line, line[1:])):
+            i > j and i - j <= 3 for i, j in zip(line, line[1:])
+        ):
             safe_lines += 1
 
     print("safe lines for part 1: ", safe_lines)
-
 
     # part 2
 
@@ -34,14 +34,12 @@ if __name__ == '__main__':
             return 0
         return pairs - increasing_pairs
 
-
     def non_decreasing_pairs(ar: List):
         pairs = len(ar) - 1
         decreasing_pairs = sum(i > j and i - j <= 3 for i, j in zip(ar, ar[1:]))
         if pairs == decreasing_pairs:
             return 0
         return pairs - decreasing_pairs
-
 
     safe_lines = 0
     for line in data:
@@ -56,23 +54,49 @@ if __name__ == '__main__':
         else:
             # handle the single error
             if non_inc <= 2:
-                problem_pair = [item for item in enumerate(zip(line, line[1:])) if
-                                item[1][1] - item[1][0] > 3 or item[1][0] >= item[1][1]][0]
+                problem_pair = [
+                    item
+                    for item in enumerate(zip(line, line[1:]))
+                    if item[1][1] - item[1][0] > 3 or item[1][0] >= item[1][1]
+                ][0]
                 if problem_pair[0] == 0 and non_increasing_pairs(line[1:]) == 0:
                     safe_lines += 1
-                elif non_increasing_pairs(line[:problem_pair[0]] + line[problem_pair[0] + 1:]) == 0:
+                elif (
+                    non_increasing_pairs(
+                        line[: problem_pair[0]] + line[problem_pair[0] + 1 :]
+                    )
+                    == 0
+                ):
                     safe_lines += 1
-                elif problem_pair[0] + 1 <= len(line) - 1 and non_increasing_pairs(
-                        line[:problem_pair[0] + 1] + line[problem_pair[0] + 2:]) == 0:
+                elif (
+                    problem_pair[0] + 1 <= len(line) - 1
+                    and non_increasing_pairs(
+                        line[: problem_pair[0] + 1] + line[problem_pair[0] + 2 :]
+                    )
+                    == 0
+                ):
                     safe_lines += 1
             elif non_dec <= 2:
-                problem_pair = [item for item in enumerate(zip(line, line[1:])) if
-                                item[1][0] - item[1][1] > 3 or item[1][0] <= item[1][1]][0]
+                problem_pair = [
+                    item
+                    for item in enumerate(zip(line, line[1:]))
+                    if item[1][0] - item[1][1] > 3 or item[1][0] <= item[1][1]
+                ][0]
                 if problem_pair[0] == 0 and non_decreasing_pairs(line[1:]) == 0:
                     safe_lines += 1
-                elif non_decreasing_pairs(line[:problem_pair[0]] + line[problem_pair[0] + 1:]) == 0:
+                elif (
+                    non_decreasing_pairs(
+                        line[: problem_pair[0]] + line[problem_pair[0] + 1 :]
+                    )
+                    == 0
+                ):
                     safe_lines += 1
-                elif problem_pair[0] + 1 <= len(line) - 1 and non_decreasing_pairs(
-                        line[:problem_pair[0] + 1] + line[problem_pair[0] + 2:]) == 0:
+                elif (
+                    problem_pair[0] + 1 <= len(line) - 1
+                    and non_decreasing_pairs(
+                        line[: problem_pair[0] + 1] + line[problem_pair[0] + 2 :]
+                    )
+                    == 0
+                ):
                     safe_lines += 1
     print("safe lines for part 2: ", safe_lines)
