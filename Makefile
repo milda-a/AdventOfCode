@@ -1,5 +1,5 @@
 venv:
-	. venv/bin/activate
+	. .venv/bin/activate
 
 format:
 	black .
