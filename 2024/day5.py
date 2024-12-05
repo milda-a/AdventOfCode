@@ -25,7 +25,7 @@ if __name__ == "__main__":
         for i, x in enumerate(each_update):
             if common_elements := [y for y in each_update[:i] if y in pages[x]]:
                 rule_adhered_to = False
-                # reorder
+                # reorder for part 2
                 lowest_index = min(
                     [update_pending[:i].index(y) for y in common_elements]
                 )
