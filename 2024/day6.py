@@ -98,7 +98,9 @@ if __name__ == "__main__":
                     list_to_investigate = [
                         (next_x, i) for i in range(next_y, len(data[next_x]))
                     ]
-                if blocker_positions := [i for i in list_to_investigate if i in blockers.keys()]:
+                if blocker_positions := [
+                    i for i in list_to_investigate if i in blockers.keys()
+                ]:
                     if next_position() in [blockers[i][0] for i in blocker_positions]:
                         part_2_result += 1
                 current_x = next_x
