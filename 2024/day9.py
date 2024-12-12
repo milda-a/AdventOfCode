@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 from read_data import read_in_data
 
 if __name__ == '__main__':
@@ -9,7 +11,7 @@ if __name__ == '__main__':
 
     data = read_in_data('./data/day9.txt')[0]
     part_1_result = 0
-    part_2_result = 0
+    part_2_result = []
 
     #part_1
     result = []
@@ -68,8 +70,47 @@ if __name__ == '__main__':
 
     # part 2
 
-    pt_2_data = data.copy()
+    by_block_num = defaultdict(list)
+    for i in range(len(data)-1, 0, -2):
+        by_block_num[data[i]].append(str(i//2))
 
+    max_id = len(data)-1 // 2
+
+    def block_fill(space):
+        global part_2_result
+        global by_block_num
+        global max_id
+        global data
+        for i in range(max_id-1, 0, -2):
+            if str(i//2) in by_block_num[data[i]] and int(data[i]) <= space:
+                part_2_result.append(str(i//2) * int(data[i]))
+                space -= int(data[i])
+                by_block_num[data[i]].remove(str(i//2))
+                data = data[:i] + "0" + data[i+1:]
+                if space == 0:
+                    return
+                else:
+                    max_id -= 2
+                    return block_fill(space)
+        part_2_result.append(str(0) * space)
+        return
+
+
+
+    total_spaces = sum(int(x) for i, x in enumerate(data))
+
+
+    left_index = 0
+
+
+
+    while len(part_2_result) < total_spaces:
+        if left_index % 2 == 0:
+            part_2_result.append(str(left_index // 2) * int(data[left_index]))
+            left_index += 1
+        else:
+            block_fill(int(data[left_index]))
+            left_index += 1
 
     part_1_result = sum(int(x)*i for i, x in enumerate(result))
     print('Part 1: ', part_1_result)
