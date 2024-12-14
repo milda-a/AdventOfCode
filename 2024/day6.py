@@ -48,30 +48,30 @@ if __name__ == "__main__":
         if curr_pos == "up":
             last_3_blocks.pop("up", None)
             result = (
-                    1
-                    if x - last_3_blocks["left"][0]
-                    == last_3_blocks["right"][0] - last_3_blocks["down"][0]
-                    and y - last_3_blocks["left"][1]
-                    == last_3_blocks["right"][1] - last_3_blocks["down"][1]
-                    else 0
-                )
+                1
+                if x - last_3_blocks["left"][0]
+                == last_3_blocks["right"][0] - last_3_blocks["down"][0]
+                and y - last_3_blocks["left"][1]
+                == last_3_blocks["right"][1] - last_3_blocks["down"][1]
+                else 0
+            )
             if result:
                 last_3_blocks.pop("right", None)
         elif curr_pos == "right":
             last_3_blocks.pop("right", None)
             result = (
-                    1
-                    if last_3_blocks["up"][0] - last_3_blocks["left"][0]
-                    == x - last_3_blocks["down"][0]
-                    and last_3_blocks["up"][1] - last_3_blocks["left"][1]
-                    == y - last_3_blocks["down"][1]
-                    else 0
-                )
+                1
+                if last_3_blocks["up"][0] - last_3_blocks["left"][0]
+                == x - last_3_blocks["down"][0]
+                and last_3_blocks["up"][1] - last_3_blocks["left"][1]
+                == y - last_3_blocks["down"][1]
+                else 0
+            )
             if result:
                 last_3_blocks.pop("down", None)
         elif curr_pos == "down":
             last_3_blocks.pop("down", None)
-            result =  (
+            result = (
                 1
                 if last_3_blocks["up"][0] - x
                 == last_3_blocks["right"][0] - last_3_blocks["down"][0]
@@ -140,7 +140,9 @@ if __name__ == "__main__":
                 change_position()
             elif is_last_blockers_full():
                 # generate potential obstruction
-                part_2_result += potential_obstruction(next_x, next_y, get_position(*current_position))
+                part_2_result += potential_obstruction(
+                    next_x, next_y, get_position(*current_position)
+                )
             else:
                 marked_map[next_x] = (
                     marked_map[next_x][:next_y] + "X" + marked_map[next_x][next_y + 1 :]
